@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import { Meta, Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+
+  constructor(private meta: Meta, private title: Title) {
+  }
+
 }
