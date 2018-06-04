@@ -5,6 +5,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 const routes: Routes = [
   {
@@ -30,6 +32,8 @@ const routes: Routes = [
     ),
 
     BrowserModule.withServerTransition({ appId: 'angular-ssr' }),
+
+    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
   ],
   exports: [RouterModule],
   providers: [],
