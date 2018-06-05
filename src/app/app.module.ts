@@ -7,6 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 const routes: Routes = [
   {
@@ -15,14 +16,17 @@ const routes: Routes = [
   },
   {
     path: 'about',
-    component: AboutComponent
-  }
+    component: AboutComponent,
+    pathMatch: 'full'
+  },
+  { path: '**', component: NotFoundComponent }
 ];
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    AboutComponent
+    AboutComponent,
+    NotFoundComponent
   ],
 
   imports: [
