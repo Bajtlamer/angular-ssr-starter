@@ -1,6 +1,7 @@
 // These are important and needed before anything else
 import 'zone.js/dist/zone-node';
 import 'reflect-metadata';
+import * as functions from 'firebase-functions';
 
 import { enableProdMode } from '@angular/core';
 
@@ -44,10 +45,13 @@ app.get('*.*', express.static(join(DIST_FOLDER, 'browser')));
 
 // All regular routes use the Universal engine
 app.get('*', (req, res) => {
+  res.set('Cache-Control', 'public, max-age=600, s-maxage=1200');
   res.render('index', { req });
 });
 
+export let ssrapp = functions.https.onRequest(app);
+
 // Start up the Node server
-app.listen(PORT, () => {
-  console.log(`Node server listening on http://localhost:${PORT}`);
-});
+// app.listen(PORT, () => {
+//   console.log(`Node server listening on http://localhost:${PORT}`);
+// });
